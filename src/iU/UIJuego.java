@@ -1,5 +1,5 @@
 
-package juego;
+package iU;
 public class UIJuego extends javax.swing.JFrame {
     public UIJuego() {
        initComponents();

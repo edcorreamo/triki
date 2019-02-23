@@ -42,6 +42,7 @@ public class UIText implements IU{
      
          System.out.println("h");
          return 0;
+         //codigo pendiente
      }
      
      
@@ -77,7 +78,7 @@ public class UIText implements IU{
      public  int printMenu(){
      
          System.out.println("h");
-         return 0;
+         return 0;//Codigo pendiente
      }
 
 }

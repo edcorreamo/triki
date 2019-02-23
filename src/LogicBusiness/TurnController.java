@@ -5,11 +5,11 @@ import java.util.Random;
 import Data.Board;
 import Data.Player;
 import Data.Square;
-import iU.UIText;
+import iU.IU;
 
 public class TurnController {
 
-    public static Board playTurn(Board board, Player player) {
+    public static Board playTurn(Board board, Player player, IU inter) {
 
         int square;
         boolean validMovement = false;
@@ -20,19 +20,19 @@ public class TurnController {
         do {
 
             if (player.isHumanPlayer()) {
-                //square = UIText.askMovement(board, playerSymbol);
+               square = inter.askMovement(board, playerSymbol);
             } else {
                 square = generateRobotMovement();
             }
-           // validMovement = MovementHandler.isValid(board, square);
+            validMovement = MovementHandler.isValid(board, square);
 
             if (!validMovement) {
-                //UIText.printError();
+                inter.printError();
             } else {
-              //  markBoard(board, square, playerSymbol);
+              markBoard(board, square, playerSymbol);
             }
 
-          // UIText.printBoard(board);
+           inter.printBoard(board);
 
         } while (!validMovement);
 

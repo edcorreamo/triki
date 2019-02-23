@@ -5,25 +5,45 @@ package LogicBusiness;
 import Data.Board;
 import Data.Player;
 import iU.UIText;
+import iU.IU;
+import iU.UISwing;
 
 public class GameEngine {
 
     private static Player player1;
     private static Player player2;
     private static Board board;
-
+    private static IU inter;
     public static void main(String[] args) {
+      UISwing ventana= new UISwing();
+        
+        
+      java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new UISwing().setVisible(true);
+            }
+        });
+     
+        
+        
         startGame();
     }
 
+    
+    //Codigo Pendiente
+    
+    
+    
+    
+    
+    
     private static void startGame() {
 
         player1 = new Player('X', true);
         player2 = new Player('O', false);
         board = new Board();
 
-      // UIText.printWelcome(player1, player2);
-
+      inter.printWelcome(player1, player2);
         play();
     }
 
@@ -35,14 +55,14 @@ public class GameEngine {
 
         do {
             current = getCurrentPlayer(current);
-            board = TurnController.playTurn(board, current);
+            board = TurnController.playTurn(board, current, inter);
 
             if (MovementHandler.isWinningMovement(board, current)) {
-               //UIText.printWinner(current);
+               inter.printWinner(current);
                 isWinner = true;
             } else {
                 if (!TurnController.existFreeSquares(board, player1, player2)) {
-                   // UIText.printTie();
+                   inter.printTie();
                     isTie = true;
                 }
             }
